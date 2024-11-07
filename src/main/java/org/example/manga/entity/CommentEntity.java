@@ -1,11 +1,19 @@
 package org.example.manga.entity;
 
-import jakarta.persistence.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 // Add other necessary imports
 
 import java.util.Date;
@@ -40,20 +48,20 @@ public class CommentEntity {
     private List<CommentEntity> childComments;
 
     @ManyToOne
-    @JoinColumn(name = "manga_id")
+    @JoinColumn(name = "manga_id", insertable = false, updatable = false)
     private MangaEntity manga;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", insertable = false, updatable = false)
     private Long userId; // ID пользователя
 
     @Column(name = "manga_id")
     private Long mangaId; // ID манги
 
-    @Column(name = "parent_comment_id")
+    @Column(name = "parent_comment_id", insertable = false, updatable = false)
     private Long parentCommentId; // ID родительского комментария
 
     // Геттеры и сеттеры
