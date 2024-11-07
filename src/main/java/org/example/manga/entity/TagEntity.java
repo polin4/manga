@@ -1,14 +1,20 @@
 package org.example.manga.entity;
 
 import jakarta.persistence.*;
-
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+// Add other necessary imports
 
 @Entity
 @Table(name = "Tag")
 public class TagEntity {
 
     @Id
+    @Column(name = "tag_name", nullable = false, unique = true)
     private String tagName;
 
     @ManyToMany
@@ -19,8 +25,7 @@ public class TagEntity {
     )
     private List<MangaEntity> mangas;
 
-    // Геттеры и сеттеры
-
+    // Getters and Setters
     public String getTagName() {
         return tagName;
     }

@@ -2,12 +2,19 @@ package org.example.manga.entity;
 import jakarta.persistence.*;
 
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+// Add other necessary imports
 
 @Entity
 @Table(name = "Folder")
 public class FolderEntity {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long folderID;
 
     private String name;

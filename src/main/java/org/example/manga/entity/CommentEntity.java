@@ -1,6 +1,13 @@
 package org.example.manga.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+// Add other necessary imports
+
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +47,44 @@ public class CommentEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    @Column(name = "user_id")
+    private Long userId; // ID пользователя
+
+    @Column(name = "manga_id")
+    private Long mangaId; // ID манги
+
+    @Column(name = "parent_comment_id")
+    private Long parentCommentId; // ID родительского комментария
+
     // Геттеры и сеттеры
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) { // Устанавливает ID пользователя
+        this.userId = userId;
+    }
+
+    // Геттеры и сеттеры для mangaId
+
+    public Long getMangaId() {
+        return mangaId;
+    }
+
+    public void setMangaId(Long mangaId) { // Устанавливает ID манги
+        this.mangaId = mangaId;
+    }
+
+    // Геттеры и сеттеры для parentCommentId
+
+    public Long getParentCommentId() {
+        return parentCommentId;
+    }
+
+    public void setParentCommentId(Long parentCommentId) { // Устанавливает ID родительского комментария
+        this.parentCommentId = parentCommentId;
+    }
+
     public Long getCommentID() {
         return commentID;
     }
@@ -64,6 +108,7 @@ public class CommentEntity {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
 
     public Date getDate() {
         return date;

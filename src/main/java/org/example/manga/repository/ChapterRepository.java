@@ -1,4 +1,7 @@
 package org.example.manga.repository;
 
-public interface ChapterRepository {
+import org.example.manga.entity.ChapterEntity;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ChapterRepository extends CrudRepository<ChapterEntity, Long> {
 }

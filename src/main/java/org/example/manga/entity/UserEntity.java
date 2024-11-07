@@ -1,15 +1,22 @@
 package org.example.manga.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+// Add other necessary imports
 
 @Entity
-@Table(name = "User")
+@Table(name = "AppUser")
 public class UserEntity {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long userID;
 
-    private String name;
+    private String username;
 
     private String mail;
 
@@ -28,12 +35,12 @@ public class UserEntity {
         this.userID = userID;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.username = name;
     }
 
     public String getMail() {
@@ -59,4 +66,5 @@ public class UserEntity {
     public void setRole(Role role) {
         this.role = role;
     }
+
 }

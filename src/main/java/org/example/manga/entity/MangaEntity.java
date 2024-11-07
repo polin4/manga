@@ -1,12 +1,19 @@
 package org.example.manga.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+// Add other necessary imports
 
 @Entity
 @Table(name = "Folder")
 public class MangaEntity {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long mangaId;
 
     private String name;
@@ -25,11 +32,11 @@ public class MangaEntity {
     // Геттеры и сеттеры
 
     public Long getMangaID() {
-        return mangaID;
+        return mangaId;
     }
 
     public void setMangaID(Long mangaID) {
-        this.mangaID = mangaID;
+        this.mangaId = mangaID;
     }
 
     public String getName() {
@@ -40,11 +47,11 @@ public class MangaEntity {
         this.name = name;
     }
 
-    public String getAuthor() {
+    public UserEntity getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(UserEntity author) {
         this.author = author;
     }
 
@@ -70,13 +77,5 @@ public class MangaEntity {
 
     public void setStatus(StatusManga status) {
         this.status = status;
-    }
-
-    public List<TagEntity> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<TagEntity> tags) {
-        this.tags = tags;
     }
 }

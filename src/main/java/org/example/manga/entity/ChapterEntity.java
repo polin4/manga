@@ -1,12 +1,20 @@
 package org.example.manga.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+
+import jakarta.persistence.GenerationType;
+// Add other necessary imports
 
 @Entity
 @Table(name = "Chapter")
 public class ChapterEntity {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long chapterId;
 
     private String chapterName;
@@ -18,20 +26,29 @@ public class ChapterEntity {
     private Long mangaId;
 
     @ManyToOne
-    @JoinColumn(name =  "author_id")
+    @JoinColumn(name = "author_id")
     private UserEntity author;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private ChapterStatus status; //в каком файле определять енам
+    private ChapterStatus status;
 
-    //геттеры и сеттеры
-    public Long getChapterID(){
+    // Getters and Setters
+
+    public Long getChapterId() {
         return chapterId;
     }
 
-    public void setChapterID(Long chapterID) {
-        this.chapterId = chapterID;
+    public Long getMangaId() {
+        return mangaId;
+    }
+
+    public void setChapterId(Long chapterId) {
+        this.chapterId = chapterId;
+    }
+
+    public void setMangaId(Long mangaId) {
+        this.mangaId = mangaId;
     }
 
     public String getChapterName() {
@@ -58,14 +75,6 @@ public class ChapterEntity {
         this.chapterNumber = chapterNumber;
     }
 
-    public Long getMangaID() {
-        return mangaId;
-    }
-
-    public void setMangaID(Long mangaID) {
-        this.mangaId = mangaID;
-    }
-
     public UserEntity getAuthor() {
         return author;
     }
@@ -82,4 +91,3 @@ public class ChapterEntity {
         this.status = status;
     }
 }
-
