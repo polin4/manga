@@ -66,4 +66,11 @@ public class FolderEntity {
     public void setMangas(List<MangaEntity> mangas) {
         this.mangas = mangas;
     }
+
+    public void removeManga(MangaEntity manga) {
+    }
+
+    public void addManga(MangaEntity manga) {
+
+    }
 }
